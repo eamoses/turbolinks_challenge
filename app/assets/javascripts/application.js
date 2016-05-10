@@ -21,3 +21,14 @@ var page_view_count = {
   "lightcoral": 0,
   "lightseagreen": 0
 };
+
+$(document).on("page:change", function(e){
+  var color = location.pathname.replace("/", "") || "home";
+  $("#" + color + " .view_count.badge").text(page_view_count[color]);
+    if(color){
+      page_view_count[color] += 1;
+      $('body').css("background-color", color);
+      $("#" + color + " .view_count.badge").text(page_view_count[color]);
+    }
+
+});
